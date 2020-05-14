@@ -40,20 +40,19 @@ from the provided payload
         else:
             yield event ['sender']['id'], 'I cannot echo this'
 
-def send_message(token, recipient, text): 
-    """
-    Send the message text to recipient with id recipient
-    """
-    r = requests.post('https://graph.facebook.com/v2.6/me/messages',
-                      params={'access_token': token},
-                      data=json.dumps({
-                          'recipient': {'id': recipient},
-                          'message': {'text':
-                              text.decode('unicode_escape')}
-                      }),
-                      headers={'Content-Type':'application/json'})
-    if r.status_code != requests.codes.ok:
-        print(r.text)
+def send_message(token, recipient, text):
+      """Send the message text to recipient with id recipient.
+  """
+
+  r = requests.post("https://graph.facebook.com/v2.6/me/messages",
+    params={"access_token": token},
+    data=json.dumps({
+      "recipient": {"id": recipient},
+      "message": {"text": text.decode('unicode_escape')}
+    }),
+    headers={'Content-type': 'application/json'})
+  if r.status_code != requests.codes.ok:
+    print r.text
 
 if __name__ == '__main__':
     app.run()
