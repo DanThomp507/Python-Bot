@@ -1,15 +1,15 @@
 from flask import Flask, request
 import json
 import requests
-from dotenv import load_dotenv
-import os
+# from dotenv import load_dotenv
+# import os
 
-pat = os.environ.get("PAT")
-
+# pat = os.environ.get("PAT")
+# print(pat)
 app = Flask(__name__)
 
-PAT = pat
-
+PAT = "EAAg5QDZAOmyEBACR7v7a3hrKtKhsSq7X6XIq5cZAEncGz4cSfYXMNsWrKI2PRboedmJZBgfsSjXlciBhZBNKsfpza4jbKjWPTfQwK6MGB5GwIrDSkbEKl8oatQdCVbdYbBS3APZC0hkg0iUWIZAa9CBHu6a0ZB25lGZC6iYmHn7VugZDZD"
+# print(PAT)
 
 @app.route('/', methods=['GET'])
 def handle_verification():
