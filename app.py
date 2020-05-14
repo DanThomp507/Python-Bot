@@ -1,15 +1,11 @@
 from flask import Flask, request
 import json
 import requests
-# from dotenv import load_dotenv
-# import os
+from os import environ
 
-# pat = os.environ.get("PAT")
-# print(pat)
 app = Flask(__name__)
-
-PAT = "EAAg5QDZAOmyEBACR7v7a3hrKtKhsSq7X6XIq5cZAEncGz4cSfYXMNsWrKI2PRboedmJZBgfsSjXlciBhZBNKsfpza4jbKjWPTfQwK6MGB5GwIrDSkbEKl8oatQdCVbdYbBS3APZC0hkg0iUWIZAa9CBHu6a0ZB25lGZC6iYmHn7VugZDZD"
-# print(PAT)
+# app.config.from_pyfile('settings.py')
+app.config['PAT'] = environ.get('PAT')
 
 @app.route('/', methods=['GET'])
 def handle_verification():
@@ -28,7 +24,7 @@ def handle_messages():
     print(payload)
     for sender, message in messaging_events(payload):
         print('Incoming from %s: %s' % (sender, message))
-        send_message(PAT, sender, message)
+        send_message(app.config['PAT'], sender, message)
         return "Ok"
 
 def messaging_events(payload):
