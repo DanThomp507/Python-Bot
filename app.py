@@ -9,7 +9,7 @@ app.config['PAT'] = environ.get('PAT')
 PAT="EAAg5QDZAOmyEBACR7v7a3hrKtKhsSq7X6XIq5cZAEncGz4cSfYXMNsWrKI2PRboedmJZBgfsSjXlciBhZBNKsfpza4jbKjWPTfQwK6MGB5GwIrDSkbEKl8oatQdCVbdYbBS3APZC0hkg0iUWIZAa9CBHu6a0ZB25lGZC6iYmHn7VugZDZD"
 
 
-@app.route('/', methods=['GET'])
+# @app.route('/', methods=['GET'])
 # def handle_verification():
 #   print('Handling Verification')
 #   print(request.args.get('hab.verify_token'))
