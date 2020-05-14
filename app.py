@@ -6,6 +6,7 @@ from os import environ
 app = Flask(__name__)
 # app.config.from_pyfile('settings.py')
 app.config['PAT'] = environ.get('PAT')
+PAT="EAAg5QDZAOmyEBACR7v7a3hrKtKhsSq7X6XIq5cZAEncGz4cSfYXMNsWrKI2PRboedmJZBgfsSjXlciBhZBNKsfpza4jbKjWPTfQwK6MGB5GwIrDSkbEKl8oatQdCVbdYbBS3APZC0hkg0iUWIZAa9CBHu6a0ZB25lGZC6iYmHn7VugZDZD"
 
 
 @app.route('/', methods=['GET'])
@@ -26,7 +27,7 @@ def handle_messages():
     print(payload)
     for sender, message in messaging_events(payload):
         print('Incoming from %s: %s' % (sender, message))
-        send_message(app.config['PAT'], sender, message)
+        send_message(PAT, sender, message)
         return "Ok"
 
 
