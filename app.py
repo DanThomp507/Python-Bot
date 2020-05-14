@@ -5,20 +5,20 @@ from os import environ
 
 app = Flask(__name__)
 # app.config.from_pyfile('settings.py')
-app.config['PAT'] = environ.get('PAT')
-PAT="EAAg5QDZAOmyEBACR7v7a3hrKtKhsSq7X6XIq5cZAEncGz4cSfYXMNsWrKI2PRboedmJZBgfsSjXlciBhZBNKsfpza4jbKjWPTfQwK6MGB5GwIrDSkbEKl8oatQdCVbdYbBS3APZC0hkg0iUWIZAa9CBHu6a0ZB25lGZC6iYmHn7VugZDZD"
+# app.config['PAT'] = environ.get('PAT')
+PAT="EAAg5QDZAOmyEBAHxw7C1BpUZCl7uq1iZCEZAAGgYzrYuO5HnmZAdziKdcMLhZCyj2jT1dVq0d7yIQE988oW6t4F5fd8Q96PAN70EpiNQ4HdWm7lBUYbcBwYMQbXHFGrIWjC6kpaxTpiob855AwFQuDlntZA9FOIaIrcMfPNc27UBAZDZD"
 
 
-# @app.route('/', methods=['GET'])
-# def handle_verification():
-#   print('Handling Verification')
-#   print(request.args.get('hab.verify_token'))
-#   if request.args.get('hub.verify_token', '') == 'my_voice_is_my_password_verify_me':
-#     print('Verification successful!')
-#     return request.args.get('hub.challenge', '')
-#   else:
-#     print('Verification failed!')
-#     return 'Error, wrong validation token'
+@app.route('/', methods=['GET'])
+def handle_verification():
+  print('Handling Verification')
+  print(request.args.get('hub.verify_token'))
+  if request.args.get('hub.verify_token', '') == 'verify':
+    print('Verification successful!')
+    return request.args.get('hub.challenge', '')
+  else:
+    print('Verification failed!')
+    return 'Error, wrong validation token'
 
 
 @app.route('/', methods=['POST'])
