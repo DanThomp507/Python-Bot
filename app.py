@@ -1,24 +1,22 @@
 from flask import Flask, request
 import json
 import requests
-from os import environ
+import os
 
 app = Flask(__name__)
 # app.config.from_pyfile('settings.py')
 # app.config['PAT'] = environ.get('PAT')
-PAT="EAAg5QDZAOmyEBAHxw7C1BpUZCl7uq1iZCEZAAGgYzrYuO5HnmZAdziKdcMLhZCyj2jT1dVq0d7yIQE988oW6t4F5fd8Q96PAN70EpiNQ4HdWm7lBUYbcBwYMQbXHFGrIWjC6kpaxTpiob855AwFQuDlntZA9FOIaIrcMfPNc27UBAZDZD"
-
 
 @app.route('/', methods=['GET'])
-def handle_verification():
-  print('Handling Verification')
-  print(request.args.get('hub.verify_token'))
-  if request.args.get('hub.verify_token', '') == 'verify':
-    print('Verification successful!')
-    return request.args.get('hub.challenge', '')
-  else:
-    print('Verification failed!')
-    return 'Error, wrong validation token'
+def verify():
+    # when the endpoint is registered as a webhook, it must echo back
+    # the 'hub.challenge' value it receives in the query arguments
+    if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
+        if not request.args.get("hub.verify_token") == os.environ["PAT"]:
+            return "Verification token mismatch", 403
+        return request.args["hub.challenge"], 200
+
+    return "Hello world", 200
 
 
 @app.route('/', methods=['POST'])
