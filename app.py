@@ -1,10 +1,14 @@
 from flask import Flask, request
 import json
 import requests
+from dotenv import load_dotenv
+import os
+
+pat = os.environ.get("PAT")
 
 app = Flask(__name__)
 
-PAT = ''
+PAT = pat
 
 
 @app.route('/', methods=['GET'])
