@@ -4,10 +4,10 @@ import requests
 import os
 import sys
 from datetime import datetime
-import config
+# import config
 
-PAT_KEY = config.PAT_KEY
-print(PAT)
+PAT_KEY = os.environ.get('PAT_KEY', None)
+print(PAT_KEY)
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
@@ -86,4 +86,4 @@ def send_message(recipient_id, message_text):
 #     sys.stdout.flush()
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
