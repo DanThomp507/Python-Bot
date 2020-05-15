@@ -4,9 +4,10 @@ import requests
 import os
 import sys
 from datetime import datetime
+import config
 
 app = Flask(__name__)
-PAT = "EAAg5QDZAOmyEBAHxw7C1BpUZCl7uq1iZCEZAAGgYzrYuO5HnmZAdziKdcMLhZCyj2jT1dVq0d7yIQE988oW6t4F5fd8Q96PAN70EpiNQ4HdWm7lBUYbcBwYMQbXHFGrIWjC6kpaxTpiob855AwFQuDlntZA9FOIaIrcMfPNc27UBAZDZD"
+PAT = config.PAT_KEY
 
 @app.route('/', methods=['GET'])
 def verify():
