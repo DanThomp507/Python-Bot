@@ -6,13 +6,14 @@ import sys
 from datetime import datetime
 import config
 
-PAT = config.PAT_KEY
+PAT_KEY = config.PAT_KEY
+print(PAT)
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def verify():
     if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
-        if not request.args.get("hub.verify_token") == PAT:
+        if not request.args.get("hub.verify_token") == PAT_KEY:
             return "Verification token mismatch", 403
         return request.args["hub.challenge"], 200
 
@@ -54,7 +55,7 @@ def send_message(recipient_id, message_text):
     print("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
 
     params = {
-        "access_token": PAT
+        "access_token": PAT_KEY
     }
     headers = {
         "Content-Type": "application/json"
