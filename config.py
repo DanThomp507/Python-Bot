@@ -7,4 +7,4 @@ load_dotenv()
 PAT_KEY = getenv('PAT', None)
 assert PAT_KEY
 
-print(PAT_KEY, 'CONFIG.PY')
+# print(PAT_KEY, 'CONFIG.PY')
