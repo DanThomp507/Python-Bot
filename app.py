@@ -4,10 +4,8 @@ import requests
 import os
 import sys
 from datetime import datetime
-# import config
 
 PAT_KEY = os.environ.get('PAT_KEY', None)
-print(PAT_KEY)
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
