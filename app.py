@@ -6,8 +6,8 @@ import sys
 from datetime import datetime
 import config
 
-app = Flask(__name__)
 PAT = config.PAT_KEY
+app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def verify():
