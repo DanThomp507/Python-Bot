@@ -6,7 +6,6 @@ import sys
 from datetime import datetime
 import config
 
-print(config.PAT_KEY)
 PAT = config.PAT_KEY
 app = Flask(__name__)
 
